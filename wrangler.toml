@@ -1,0 +1,3 @@
+name = "audio-proxy"
+main = "audio-proxy.js"
+compatibility_date = "2026-04-22"

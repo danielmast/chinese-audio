@@ -5,32 +5,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>XSY3E Audio Resources</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+
+    * { box-sizing: border-box; }
+
     body {
-      font-family: sans-serif;
+      font-family: 'Noto Serif', serif;
       max-width: 800px;
       margin: 0 auto;
-      padding: 1rem 1.5rem;
-      background: #f5f5f5;
-      color: #222;
+      background: #f5e6b8;
+      color: #2c1a0e;
     }
-    h1 {
-      font-size: 1.3rem;
-      margin-bottom: 1.5rem;
-      color: #444;
+
+    .banner {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+      margin: 1.25rem 1.5rem 0;
+      border-radius: 2px;
     }
-    .block {
-      background: #fff;
-      border-radius: 8px;
-      padding: 0.5rem 0.75rem;
-      margin-bottom: 0.6rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+    .banner-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
     }
-    .title {
+
+    .banner-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+    }
+
+    .banner h1 {
+      color: #f5d98a;
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.6), 0 0 40px rgba(201,168,76,0.25);
+      margin: 0;
+    }
+
+    .banner-ornament {
+      color: rgba(201,168,76,0.75);
       font-size: 0.8rem;
-      font-weight: bold;
-      color: #555;
-      margin-bottom: 0.25rem;
+      letter-spacing: 0.5em;
     }
+
+    .content {
+      padding: 1.25rem 1.5rem 2rem;
+    }
+
+    .block {
+      background: #fff8f0;
+      border-radius: 2px;
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 0.55rem;
+      border: 1px solid rgba(160,110,20,0.22);
+      border-left: 4px solid #c9a84c;
+      box-shadow: 0 1px 5px rgba(100,0,0,0.08);
+    }
+
+    .title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #8b0000;
+      margin-bottom: 0.25rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
     audio {
       width: 100%;
       display: block;
@@ -38,7 +88,53 @@
   </style>
 </head>
 <body>
-  <h1>XSY3E Audio Resources</h1>
+  <div class="banner">
+    <svg class="banner-bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="bannerGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#b00000"/>
+          <stop offset="100%" stop-color="#640000"/>
+        </linearGradient>
+        <pattern id="diamondPat" width="22" height="22" patternUnits="userSpaceOnUse">
+          <path d="M11 0L22 11L11 22L0 11Z" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="0.6"/>
+        </pattern>
+        <pattern id="dotPat" width="40" height="40" patternUnits="userSpaceOnUse">
+          <circle cx="20" cy="20" r="1" fill="rgba(201,168,76,0.18)"/>
+        </pattern>
+      </defs>
+      <rect width="800" height="200" fill="url(#bannerGrad)"/>
+      <rect width="800" height="200" fill="url(#diamondPat)"/>
+      <rect width="800" height="200" fill="url(#dotPat)"/>
+      <line x1="0" y1="16" x2="800" y2="16" stroke="#c9a84c" stroke-width="1.5" opacity="0.65"/>
+      <line x1="0" y1="184" x2="800" y2="184" stroke="#c9a84c" stroke-width="1.5" opacity="0.65"/>
+      <polyline points="16,16 16,46" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.8"/>
+      <polyline points="16,16 46,16" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.8"/>
+      <polyline points="784,16 784,46" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.8"/>
+      <polyline points="754,16 784,16" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.8"/>
+      <polyline points="16,184 16,154" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.8"/>
+      <polyline points="16,184 46,184" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.8"/>
+      <polyline points="784,184 784,154" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.8"/>
+      <polyline points="754,184 784,184" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.8"/>
+      <circle cx="80" cy="100" r="28" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.25"/>
+      <circle cx="80" cy="100" r="20" fill="none" stroke="#c9a84c" stroke-width="0.5" opacity="0.2"/>
+      <circle cx="720" cy="100" r="28" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.25"/>
+      <circle cx="720" cy="100" r="20" fill="none" stroke="#c9a84c" stroke-width="0.5" opacity="0.2"/>
+      <text x="10" y="200" font-size="210" font-family="serif" fill="rgba(255,255,255,0.035)">音</text>
+      <text x="560" y="188" font-size="210" font-family="serif" fill="rgba(255,255,255,0.035)">樂</text>
+      <line x1="240" y1="100" x2="320" y2="100" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+      <line x1="480" y1="100" x2="560" y2="100" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+      <circle cx="400" cy="100" r="3" fill="#c9a84c" opacity="0.45"/>
+      <circle cx="335" cy="100" r="1.5" fill="#c9a84c" opacity="0.35"/>
+      <circle cx="465" cy="100" r="1.5" fill="#c9a84c" opacity="0.35"/>
+    </svg>
+    <div class="banner-content">
+      <div class="banner-ornament">✦ &emsp; ✦ &emsp; ✦</div>
+      <h1>XSY3E Audio Resources</h1>
+      <div class="banner-ornament">✦ &emsp; ✦ &emsp; ✦</div>
+    </div>
+  </div>
+
+  <div class="content">
 
   <div class="block">
     <div class="title">01-01-01</div>
@@ -505,5 +601,6 @@
     <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=d01185b5-b429-40ef-b720-c2cc4051865d"></audio>
   </div>
 
+  </div>
 </body>
 </html>

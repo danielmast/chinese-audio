@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workbook Audio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Serif', serif;
+      max-width: 800px;
+      margin: 0 auto;
+      background: #f5e6b8;
+      color: #2c1a0e;
+    }
+
+    .banner {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+      margin: 1.25rem 1.5rem 0;
+      border-radius: 2px;
+    }
+
+    .banner-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .banner-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+    }
+
+    .banner h1 {
+      color: #f5d98a;
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.6), 0 0 40px rgba(201,168,76,0.25);
+      margin: 0;
+    }
+
+    .banner-ornament {
+      color: rgba(201,168,76,0.75);
+      font-size: 0.8rem;
+      letter-spacing: 0.5em;
+    }
+
+    .content {
+      padding: 1.25rem 1.5rem 2rem;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1rem;
+      color: #8b0000;
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .block {
+      background: #fff8f0;
+      border-radius: 2px;
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 0.55rem;
+      border: 1px solid rgba(160,110,20,0.22);
+      border-left: 4px solid #c9a84c;
+      box-shadow: 0 1px 5px rgba(100,0,0,0.08);
+    }
+
+    .title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #8b0000;
+      margin-bottom: 0.25rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    audio {
+      width: 100%;
+      display: block;
+    }
+
+    @media (max-width: 480px) {
+      .banner {
+        margin: 0.75rem 0.75rem 0;
+        height: 150px;
+      }
+      .banner h1 {
+        font-size: 1.15rem;
+        letter-spacing: 0.06em;
+      }
+      .banner-ornament {
+        letter-spacing: 0.2em;
+        font-size: 0.7rem;
+      }
+      .content {
+        padding: 0.75rem 0.75rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <svg class="banner-bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="bannerGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#b00000"/>
+          <stop offset="100%" stop-color="#640000"/>
+        </linearGradient>
+        <pattern id="diamondPat" width="22" height="22" patternUnits="userSpaceOnUse">
+          <path d="M11 0L22 11L11 22L0 11Z" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="0.6"/>
+        </pattern>
+        <pattern id="dotPat" width="40" height="40" patternUnits="userSpaceOnUse">
+          <circle cx="20" cy="20" r="1" fill="rgba(201,168,76,0.18)"/>
+        </pattern>
+      </defs>
+      <rect width="800" height="200" fill="url(#bannerGrad)"/>
+      <rect width="800" height="200" fill="url(#diamondPat)"/>
+      <rect width="800" height="200" fill="url(#dotPat)"/>
+      <line x1="0" y1="16" x2="800" y2="16" stroke="#c9a84c" stroke-width="1.5" opacity="0.65"/>
+      <line x1="0" y1="184" x2="800" y2="184" stroke="#c9a84c" stroke-width="1.5" opacity="0.65"/>
+      <polyline points="16,16 16,46" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.8"/>
+      <polyline points="16,16 46,16" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.8"/>
+      <polyline points="784,16 784,46" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.8"/>
+      <polyline points="754,16 784,16" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.8"/>
+      <polyline points="16,184 16,154" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.8"/>
+      <polyline points="16,184 46,184" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.8"/>
+      <polyline points="784,184 784,154" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.8"/>
+      <polyline points="754,184 784,184" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.8"/>
+      <circle cx="80" cy="100" r="28" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.25"/>
+      <circle cx="80" cy="100" r="20" fill="none" stroke="#c9a84c" stroke-width="0.5" opacity="0.2"/>
+      <circle cx="720" cy="100" r="28" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.25"/>
+      <circle cx="720" cy="100" r="20" fill="none" stroke="#c9a84c" stroke-width="0.5" opacity="0.2"/>
+      <text x="10" y="200" font-size="210" font-family="serif" fill="rgba(255,255,255,0.035)">音</text>
+      <text x="560" y="188" font-size="210" font-family="serif" fill="rgba(255,255,255,0.035)">樂</text>
+      <line x1="240" y1="100" x2="320" y2="100" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+      <line x1="480" y1="100" x2="560" y2="100" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+      <circle cx="400" cy="100" r="3" fill="#c9a84c" opacity="0.45"/>
+      <circle cx="335" cy="100" r="1.5" fill="#c9a84c" opacity="0.35"/>
+      <circle cx="465" cy="100" r="1.5" fill="#c9a84c" opacity="0.35"/>
+    </svg>
+    <div class="banner-content">
+      <div class="banner-ornament">✦ &emsp; ✦ &emsp; ✦</div>
+      <h1>Workbook Audio</h1>
+      <div class="banner-ornament">✦ &emsp; ✦ &emsp; ✦</div>
+    </div>
+  </div>
+
+  <div class="content">
+
+  <a class="back-link" href="index.html">← Back</a>
+
+  <div class="block">
+    <div class="title">00</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=9b184da0-b040-4a65-8e97-8d9ce931d598"></audio>
+  </div>
+  <div class="block">
+    <div class="title">01-1</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=b4ea2fe0-e9b3-4ab8-9cab-4d8e7d7a82a3"></audio>
+  </div>
+  <div class="block">
+    <div class="title">01-2</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=b0d7b413-b564-45ca-aebf-2027e6ec5f19"></audio>
+  </div>
+  <div class="block">
+    <div class="title">01-3</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=2d2ab2d8-177f-45c7-8d1b-b68274266a79"></audio>
+  </div>
+  <div class="block">
+    <div class="title">02-1</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=4b544df6-02f4-48c1-bf43-fbab6276d8c4"></audio>
+  </div>
+  <div class="block">
+    <div class="title">02-2</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=7e43a9f1-3c69-4b6a-9cea-8f9cb45c2330"></audio>
+  </div>
+  <div class="block">
+    <div class="title">02-3</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=b19e3a40-55ef-4b02-8420-4ce730f41402"></audio>
+  </div>
+  <div class="block">
+    <div class="title">03-1</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=7b01baea-273c-4981-ac88-1b7ddd6256c4"></audio>
+  </div>
+  <div class="block">
+    <div class="title">03-2</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=3667559e-1726-4095-9423-d062894d3346"></audio>
+  </div>
+  <div class="block">
+    <div class="title">03-3</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=3afdfae3-89a4-4e08-bed3-ca0722efc080"></audio>
+  </div>
+  <div class="block">
+    <div class="title">04-1</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=19c7a878-c84d-43f7-a18d-97bdeba4fea7"></audio>
+  </div>
+  <div class="block">
+    <div class="title">04-2</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=47add5fd-1067-4eaa-8128-b13090b399bd"></audio>
+  </div>
+  <div class="block">
+    <div class="title">04-3</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=d8fe894a-c44d-4e91-bee1-3f243c3174b5"></audio>
+  </div>
+  <div class="block">
+    <div class="title">05-1</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=8e9594da-4dfa-4139-852e-dd343848b3ed"></audio>
+  </div>
+  <div class="block">
+    <div class="title">05-2</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=afcbcd0d-38a5-4702-93ef-42f35e5bb9b0"></audio>
+  </div>
+  <div class="block">
+    <div class="title">05-3</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=0fcbacb3-19b9-4720-ab8c-151023089a4b"></audio>
+  </div>
+  <div class="block">
+    <div class="title">06-1</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=f821c2fd-c0e0-443c-8052-a491839bccaf"></audio>
+  </div>
+  <div class="block">
+    <div class="title">06-2</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=1c0b6a88-94d5-448a-b3a8-de789115565c"></audio>
+  </div>
+  <div class="block">
+    <div class="title">06-3</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=66e8b83b-574e-4021-b8e9-487e2fc4cf1c"></audio>
+  </div>
+  <div class="block">
+    <div class="title">07-1</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=643e37a4-064c-45ac-ab7b-de6571acf089"></audio>
+  </div>
+  <div class="block">
+    <div class="title">07-2</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=db0ea0aa-a984-416a-bd55-70f6c9c29b11"></audio>
+  </div>
+  <div class="block">
+    <div class="title">07-3</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=125c5f6e-5b17-467a-b0f3-eaba9d9f2534"></audio>
+  </div>
+  <div class="block">
+    <div class="title">08-1</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=49d4e8aa-24b5-436b-b675-8d9a96e22590"></audio>
+  </div>
+  <div class="block">
+    <div class="title">08-2</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=6307e96d-3af4-4dda-b904-60c33eea0e14"></audio>
+  </div>
+  <div class="block">
+    <div class="title">08-3</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=bc7356f9-583d-4ab8-a97b-4788192ee676"></audio>
+  </div>
+  <div class="block">
+    <div class="title">09-1</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=f8b28b32-e8a3-4682-9d77-f574611918b5"></audio>
+  </div>
+  <div class="block">
+    <div class="title">09-2</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=4a8184c5-ee9f-4167-b266-d20919d43f14"></audio>
+  </div>
+  <div class="block">
+    <div class="title">09-3</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=d3b15619-abb3-475d-b350-86780e421980"></audio>
+  </div>
+  <div class="block">
+    <div class="title">10-1</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=8c9da34b-f11d-4834-8909-77191b1c584a"></audio>
+  </div>
+  <div class="block">
+    <div class="title">10-2</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=198e10c1-ed72-4101-9280-be962c3749e4"></audio>
+  </div>
+  <div class="block">
+    <div class="title">10-3</div>
+    <audio controls preload="none" src="https://chinese-audio.danielmast92.workers.dev/?doi=fdfda364-3937-4ad5-b1a8-fd1d4e9abf50"></audio>
+  </div>
+
+  </div>
+</body>
+</html>
